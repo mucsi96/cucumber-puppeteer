@@ -1,5 +1,6 @@
 import { Browser, launch, Page } from "puppeteer";
 import { readConfig } from "./config";
+import "./snapshot";
 
 const context: { browser?: Browser; page?: Page } = {};
 

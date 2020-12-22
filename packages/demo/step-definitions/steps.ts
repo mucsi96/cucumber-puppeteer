@@ -6,7 +6,7 @@ Given("I open DuckDuckGo search page", async () => {
 });
 
 Then("the title is {string}", async (title: string) => {
-  expect(await page.title()).toEqual(title);
+  expect(await page.title()).toMatchSnapshot();
 });
 
 Then("the DuckDuckGo search form exists", async () => {
