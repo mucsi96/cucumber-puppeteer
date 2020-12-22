@@ -2,18 +2,26 @@
 import { Cli } from "@cucumber/cucumber";
 import { resolve } from "path";
 
-const config = require.resolve("./config");
-const features = resolve(process.cwd(), "features/**/*.feature");
-const stepDefinitions = resolve(process.cwd(), "step-definitions/**/*.ts");
+const [, , option, configPath] = process.argv;
+
+if (option !== "--config" || !configPath) {
+  console.error("Missing configuration");
+  console.log("Usage: cucumber-puppeteer --config cucumber-puppeteer.conf.js");
+}
+
+process.env.CUCUMBER_PUPPETEER_CONFIG_PATH = configPath;
+const { cucumber } = require(resolve(process.cwd(), configPath));
 const cli = new Cli({
   argv: [
     "node",
     `${require.resolve("@cucumber/cucumber")}/bin/cucumber-js`,
-    features,
+    ...cucumber.features,
     "--require",
-    config,
-    "--require",
-    stepDefinitions,
+    require.resolve("./cucumberConfig"),
+    ...cucumber.stepDefinitions.flatMap((stepDefinition: string) => [
+      "--require",
+      stepDefinition,
+    ]),
     "--publish-quiet",
   ],
   cwd: process.cwd(),
