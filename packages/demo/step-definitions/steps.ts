@@ -1,6 +1,5 @@
-import { Given, Then } from "@cucumber/cucumber";
+import { Given, page, Then } from "cucumber-puppeteer";
 import expect from "expect";
-import { page } from "./page";
 
 Given("I open DuckDuckGo search page", async () => {
   await page.goto("https://duckduckgo.com/");

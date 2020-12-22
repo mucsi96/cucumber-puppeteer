@@ -23,3 +23,5 @@ export const page = new Proxy(
     },
   }
 ) as Page;
+
+export * from "@cucumber/cucumber";

@@ -1,5 +1,8 @@
 import { AfterAll, BeforeAll, setDefaultTimeout } from "@cucumber/cucumber";
-import { start, stop } from "./step-definitions/page";
+import { register } from "ts-node";
+import { start, stop } from ".";
+
+register();
 
 setDefaultTimeout(60000);
 
