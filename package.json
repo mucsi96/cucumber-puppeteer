@@ -1,0 +1,13 @@
+{
+  "name": "cucumber-puppeteer-example",
+  "version": "0.1.0",
+  "description": "A Node.js example for end-to-end testing your app with Cucumber.js and Puppeteer",
+  "main": "index.js",
+  "repository": "git@github.com:mucsi96/cucumber-puppeteer.git",
+  "author": "Igor Bari <mucsi96@gmail.com>",
+  "license": "MIT",
+  "private": "true",
+  "workspaces": [
+    "packages/*"
+  ]
+}

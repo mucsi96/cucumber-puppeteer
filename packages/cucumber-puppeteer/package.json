@@ -1,0 +1,33 @@
+{
+  "name": "cucumber-puppeteer",
+  "version": "0.1.0",
+  "description": "A Node.js CLI for end-to-end testing your app with Cucumber.js and Puppeteer",
+  "repository": "git@github.com:mucsi96/cucumber-puppeteer.git",
+  "author": "Igor Bari <mucsi96@gmail.com>",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "bin": "./lib/cli.js",
+  "files": [
+    "lib"
+  ],
+  "engines": {
+    "node": ">= 10.0.0"
+  },
+  "scripts": {
+    "start": "ts-node src/cli.ts",
+    "typecheck": "tsc --noEmit",
+    "clean": "del-cli lib",
+    "build:declarations": "tsc --declaration --emitDeclarationOnly --outDir lib",
+    "build:compile": "babel src --out-dir lib --extensions \".ts\" --ignore \"**/*.test.ts\"",
+    "build": "npm run clean && npm run build:declarations && npm run build:compile",
+    "prepack": "npm run build",
+    "update:dependencies": "npx npm-check-updates -u"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^7.0.0",
+    "@types/puppeteer": "^5.4.2",
+    "puppeteer": "^5.5.0",
+    "typescript": "^4.1.3"
+  }
+}
