@@ -7,6 +7,8 @@ export type Configuration = {
   cucumber: {
     features: string[];
     stepDefinitions: string[];
+    screenshots: string;
+    reports: string;
   };
   puppeteer: {
     launch: LaunchOptions;

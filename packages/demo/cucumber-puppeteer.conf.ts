@@ -4,6 +4,8 @@ export default {
   cucumber: {
     features: ["features/**/*.feature"],
     stepDefinitions: ["step-definitions/**/*.ts"],
+    screenshots: "screenshots",
+    reports: "reports",
   },
   puppeteer: {
     launch: {

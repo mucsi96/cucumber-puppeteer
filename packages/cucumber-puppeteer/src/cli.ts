@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { Cli } from "@cucumber/cucumber";
+import { resolve } from "path";
 import { readConfig } from "./config";
 
 const [, , option, configPath] = process.argv;
@@ -24,6 +25,10 @@ const cli = new Cli({
       [] as string[]
     ),
     "--publish-quiet",
+    "--format",
+    "progress",
+    "--format",
+    `html:${resolve(cucumber.reports, "cucumber_report.html")}`,
   ],
   cwd: process.cwd(),
   stdout: process.stdout,
