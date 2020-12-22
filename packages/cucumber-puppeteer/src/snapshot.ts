@@ -1,31 +1,34 @@
+import { Config } from "@jest/types";
 import expect from "expect";
 import {
   buildSnapshotResolver,
   SnapshotState,
   toMatchSnapshot as jestMatchSnapshot,
 } from "jest-snapshot";
-import { SnapshotStateOptions } from "jest-snapshot/build/State";
-import { resolve } from "path";
+import { getTestContext } from "./cucumberConfig";
 
 export function toMatchSnapshot(received: unknown, name: string) {
   const snapshotResolver = buildSnapshotResolver({
-    rootDir: "features",
-  } as any);
+    rootDir: "test",
+  } as Config.ProjectConfig);
 
-  const snapshotFile = snapshotResolver.resolveSnapshotPath(
-    resolve(process.cwd(), "features/duckduckgo-search.feature")
-  );
+  const { fileName, testName } = getTestContext();
+  const snapshotFile = snapshotResolver.resolveSnapshotPath(fileName);
 
   const snapshotState = new SnapshotState(snapshotFile, {
     updateSnapshot: process.env.SNAPSHOT_UPDATE ? "all" : "new",
-  } as SnapshotStateOptions);
+    getPrettier: () => null,
+    getBabelTraverse: () => null as any,
+  });
 
-  const matcher = jestMatchSnapshot.bind({
-    snapshotState,
-    currentTestName: "Searching DuckDuckGo",
-  } as any);
-
-  const result = matcher(received, name || "");
+  const result = jestMatchSnapshot.call(
+    {
+      snapshotState,
+      currentTestName: testName,
+    } as any,
+    received,
+    name || ""
+  );
 
   snapshotState.save();
 

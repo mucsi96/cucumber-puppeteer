@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Searching DuckDuckGo 1`] = `"DuckDuckGo — Privacy, simplified."`;
+exports[`Searching DuckDuckGo 1`] = `"DuckDuckGo — Privacy, simplified.s"`;
+
+exports[`Searching DuckDuckGo again 1`] = `"DuckDuckGo — Privacy, simplified."`;

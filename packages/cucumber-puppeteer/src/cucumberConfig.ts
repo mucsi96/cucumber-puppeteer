@@ -2,15 +2,19 @@ import {
   AfterAll,
   AfterStep,
   BeforeAll,
+  BeforeStep,
   IWorldOptions,
   setDefaultTimeout,
   Status,
 } from "@cucumber/cucumber";
+import { messages } from "@cucumber/messages";
 import { readFileSync } from "fs";
 import { resolve } from "path";
 import { register } from "ts-node";
 import { page, start, stop } from ".";
 import { readConfig } from "./config";
+
+let currentPickle: messages.IPickle;
 
 const config = readConfig(process.env.CUCUMBER_PUPPETEER_CONFIG_PATH as string);
 
@@ -35,6 +39,10 @@ AfterAll(async () => {
   await stop();
 });
 
+BeforeStep(({ pickle }) => {
+  currentPickle = pickle;
+});
+
 AfterStep(async function (this: IWorldOptions, { result }) {
   if (result.status === Status.FAILED) {
     const path = getScreenshotName();
@@ -44,3 +52,13 @@ AfterStep(async function (this: IWorldOptions, { result }) {
     await this.attach(readFileSync(path), "image/png");
   }
 });
+
+export function getTestContext(): {
+  fileName: string;
+  testName: string;
+} {
+  return {
+    fileName: currentPickle.uri!,
+    testName: currentPickle.name!,
+  };
+}
