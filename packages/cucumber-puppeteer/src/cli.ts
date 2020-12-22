@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Cli } from "@cucumber/cucumber";
-import { resolve } from "path";
+import { readConfig } from "./config";
 
 const [, , option, configPath] = process.argv;
 
@@ -10,7 +10,8 @@ if (option !== "--config" || !configPath) {
 }
 
 process.env.CUCUMBER_PUPPETEER_CONFIG_PATH = configPath;
-const { cucumber } = require(resolve(process.cwd(), configPath));
+const { cucumber } = readConfig(configPath);
+
 const cli = new Cli({
   argv: [
     "node",
@@ -18,10 +19,10 @@ const cli = new Cli({
     ...cucumber.features,
     "--require",
     require.resolve("./cucumberConfig"),
-    ...cucumber.stepDefinitions.flatMap((stepDefinition: string) => [
-      "--require",
-      stepDefinition,
-    ]),
+    ...cucumber.stepDefinitions.reduce(
+      (acc, stepDefinition: string) => [...acc, "--require", stepDefinition],
+      [] as string[]
+    ),
     "--publish-quiet",
   ],
   cwd: process.cwd(),

@@ -1,4 +1,6 @@
-module.exports = {
+import { Configuration } from "cucumber-puppeteer";
+
+export default {
   cucumber: {
     features: ["features/**/*.feature"],
     stepDefinitions: ["step-definitions/**/*.ts"],
@@ -9,4 +11,4 @@ module.exports = {
       args: ["--disable-gpu", "--no-sandbox"],
     },
   },
-};
+} as Configuration;

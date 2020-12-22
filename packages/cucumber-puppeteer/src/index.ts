@@ -1,14 +1,12 @@
-import { resolve } from "path";
 import { Browser, launch, Page } from "puppeteer";
+import { readConfig } from "./config";
 
 const context: { browser?: Browser; page?: Page } = {};
 
-const config = require(resolve(
-  process.cwd(),
-  process.env.CUCUMBER_PUPPETEER_CONFIG_PATH as string
-));
-
 export async function start() {
+  const config = readConfig(
+    process.env.CUCUMBER_PUPPETEER_CONFIG_PATH as string
+  );
   context.browser = await launch(config.puppeteer.launch);
   const pages = await context.browser.pages();
   context.page = pages[0];
@@ -39,3 +37,4 @@ export const browser = new Proxy(
 ) as Browser;
 
 export * from "@cucumber/cucumber";
+export { Configuration } from "./config";
