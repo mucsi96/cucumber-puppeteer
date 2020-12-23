@@ -1,5 +1,149 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Searching DuckDuckGo 1`] = `"DuckDuckGo — Privacy, simplified.s"`;
+exports[`Searching DuckDuckGo 1`] = `
+"{
+  name: 'pg-index',
+  value: [
+    { name: 'wedonttrack', value: 'Privacy, simplified.' },
+    {
+      name: 'content_homepage',
+      children: [
+        { name: 'logo_homepage_link', value: 'About DuckDuckGo' },
+        [
+          [
+            \\"Browse as usual, and we'll take care of the rest. We bundled our search engine, tracker blocker, and encryption enforcer into one\\",
+            '.'
+          ],
+          [
+            'Search privately with our app or extension, add private web search to your favorite browser, or search directly at',
+            '.'
+          ],
+          [
+            'Our private browser for mobile comes equipped with our search engine, tracker blocker, encryption enforcer, and more. Available on',
+            '.'
+          ]
+        ]
+      ]
+    },
+    [
+      [
+        [ 'We don’t store your', 'personal information. Ever.' ],
+        [
+          'Our privacy policy is simple: we don’t collect',
+          'or share any of your personal information.'
+        ]
+      ],
+      [ 'Already a fan?', 'Invite friends to the Duck Side!' ]
+    ],
+    {
+      name: 'faq',
+      value: [
+        {
+          name: 'faq-answer-2',
+          value: [
+            [
+              'Ever notice ads constantly following you around? That’s in part because Google tracks your searches and hides trackers on millions of websites. By contrast, our private search engine doesn’t track your searches and our',
+              'block Google’s (and many other companies’) trackers across the Internet, helping to keep your browsing history more private, as it should be. And that’s just the beginning — by using DuckDuckGo you also escape the manipulation of the filter bubble and can use the Internet faster (after all that tracking code is disabled).'
+            ],
+            '.'
+          ]
+        },
+        {
+          name: 'faq-answer-3',
+          value: [
+            [
+              'DuckDuckGo search gives you truly private search results without tradeoffs in result quality. We have everything you’ve come to expect in an online search experience, and a few',
+              'that make searching the Internet not only private, but also a bit more fun! And, on top of that, because there is no search history on DuckDuckGo, you escape the filter bubble of manipulated results.'
+            ],
+            '.'
+          ]
+        },
+        {
+          name: 'faq-answer-5',
+          value: [
+            [
+              'We don’t track our users, so it’s actually impossible for us to know how many users in total are using our products. However, we are able to make an estimate based on the number of searches we get per month,',
+              '. Our best guess — over 50 million people!'
+            ],
+            '.'
+          ]
+        }
+      ]
+    }
+  ]
+}"
+`;
 
-exports[`Searching DuckDuckGo again 1`] = `"DuckDuckGo — Privacy, simplified."`;
+exports[`Searching DuckDuckGo again 1`] = `
+"{
+  name: 'pg-index',
+  value: [
+    { name: 'wedonttrack', value: 'Privacy, simplified.' },
+    {
+      name: 'content_homepage',
+      children: [
+        { name: 'logo_homepage_link', value: 'About DuckDuckGo' },
+        [
+          [
+            \\"Browse as usual, and we'll take care of the rest. We bundled our search engine, tracker blocker, and encryption enforcer into one\\",
+            '.'
+          ],
+          [
+            'Search privately with our app or extension, add private web search to your favorite browser, or search directly at',
+            '.'
+          ],
+          [
+            'Our private browser for mobile comes equipped with our search engine, tracker blocker, encryption enforcer, and more. Available on',
+            '.'
+          ]
+        ]
+      ]
+    },
+    [
+      [
+        [ 'We don’t store your', 'personal information. Ever.' ],
+        [
+          'Our privacy policy is simple: we don’t collect',
+          'or share any of your personal information.'
+        ]
+      ],
+      [ 'Already a fan?', 'Invite friends to the Duck Side!' ]
+    ],
+    {
+      name: 'faq',
+      value: [
+        {
+          name: 'faq-answer-2',
+          value: [
+            [
+              'Ever notice ads constantly following you around? That’s in part because Google tracks your searches and hides trackers on millions of websites. By contrast, our private search engine doesn’t track your searches and our',
+              'block Google’s (and many other companies’) trackers across the Internet, helping to keep your browsing history more private, as it should be. And that’s just the beginning — by using DuckDuckGo you also escape the manipulation of the filter bubble and can use the Internet faster (after all that tracking code is disabled).'
+            ],
+            '.'
+          ]
+        },
+        {
+          name: 'faq-answer-3',
+          value: [
+            [
+              'DuckDuckGo search gives you truly private search results without tradeoffs in result quality. We have everything you’ve come to expect in an online search experience, and a few',
+              'that make searching the Internet not only private, but also a bit more fun! And, on top of that, because there is no search history on DuckDuckGo, you escape the filter bubble of manipulated results.'
+            ],
+            '.'
+          ]
+        },
+        {
+          name: 'faq-answer-5',
+          value: [
+            [
+              'We don’t track our users, so it’s actually impossible for us to know how many users in total are using our products. However, we are able to make an estimate based on the number of searches we get per month,',
+              '. Our best guess — over 50 million people!'
+            ],
+            '.'
+          ]
+        }
+      ]
+    }
+  ]
+}"
+`;

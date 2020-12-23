@@ -5,6 +5,7 @@ import {
   SnapshotState,
   toMatchSnapshot as jestMatchSnapshot,
 } from "jest-snapshot";
+import prettier from "prettier";
 import { getTestContext } from "./cucumberConfig";
 
 export function toMatchSnapshot(received: unknown, name: string) {
@@ -17,7 +18,7 @@ export function toMatchSnapshot(received: unknown, name: string) {
 
   const snapshotState = new SnapshotState(snapshotFile, {
     updateSnapshot: process.env.SNAPSHOT_UPDATE ? "all" : "new",
-    getPrettier: () => null,
+    getPrettier: () => prettier,
     getBabelTraverse: () => null as any,
   });
 

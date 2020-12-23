@@ -14,11 +14,11 @@ import { register } from "ts-node";
 import { page, start, stop } from ".";
 import { readConfig } from "./config";
 
+register();
+
 let currentPickle: messages.IPickle;
 
 const config = readConfig(process.env.CUCUMBER_PUPPETEER_CONFIG_PATH as string);
-
-register();
 
 setDefaultTimeout(60000);
 

@@ -39,3 +39,4 @@ export const browser = new Proxy(
 
 export * from "@cucumber/cucumber";
 export { Configuration } from "./config";
+export { getDataSnapshot } from "./dataSnapshot";

@@ -1,4 +1,4 @@
-import { Given, page, Then } from "cucumber-puppeteer";
+import { getDataSnapshot, Given, page, Then } from "cucumber-puppeteer";
 import expect from "expect";
 
 Given("I open DuckDuckGo search page", async () => {
@@ -6,7 +6,7 @@ Given("I open DuckDuckGo search page", async () => {
 });
 
 Then("the title is {string}", async (title: string) => {
-  expect(await page.title()).toMatchSnapshot();
+  expect(await getDataSnapshot("#pg-index")).toMatchSnapshot();
 });
 
 Then("the DuckDuckGo search form exists", async () => {
