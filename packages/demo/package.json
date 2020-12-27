@@ -8,7 +8,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "cucumber-puppeteer --config cucumber-puppeteer.conf.ts"
+    "start": "cucumber-puppeteer --config cucumber-puppeteer.conf.ts",
+    "update": "cucumber-puppeteer --config cucumber-puppeteer.conf.ts --update"
   },
   "dependencies": {
     "expect": "^26.6.2",

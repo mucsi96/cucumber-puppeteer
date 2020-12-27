@@ -1,17 +1,19 @@
 #!/usr/bin/env node
 import { Cli } from "@cucumber/cucumber";
+import minimist from "minimist";
 import { resolve } from "path";
 import { readConfig } from "./config";
 
-const [, , option, configPath] = process.argv;
+const { config, update, u } = minimist(process.argv.slice(2));
 
-if (option !== "--config" || !configPath) {
+if (!config) {
   console.error("Missing configuration");
   console.log("Usage: cucumber-puppeteer --config cucumber-puppeteer.conf.js");
 }
 
-process.env.CUCUMBER_PUPPETEER_CONFIG_PATH = configPath;
-const { cucumber } = readConfig(configPath);
+process.env.SNAPSHOT_UPDATE = update || u || "";
+process.env.CUCUMBER_PUPPETEER_CONFIG_PATH = config;
+const { cucumber } = readConfig(config);
 
 const cli = new Cli({
   argv: [
