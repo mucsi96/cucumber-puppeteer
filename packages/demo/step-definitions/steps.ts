@@ -6,10 +6,14 @@ Given("I open DuckDuckGo search page", async () => {
 });
 
 Then("the title is {string}", async (title: string) => {
-  expect(await getDataSnapshot("#pg-index")).toMatchSnapshot();
+  expect(await page.title()).toEqual(title);
 });
 
 Then("the DuckDuckGo search form exists", async () => {
   const searchForm = await page.$("#search_form_homepage");
   expect(searchForm?.boundingBox()).toBeDefined();
+});
+
+Then("the DuckDuckGo search page is displayed", async () => {
+  expect(await getDataSnapshot("body")).toMatchSnapshot();
 });

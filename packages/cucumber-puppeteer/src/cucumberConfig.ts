@@ -9,7 +9,7 @@ import {
 } from "@cucumber/cucumber";
 import { messages } from "@cucumber/messages";
 import { readFileSync } from "fs";
-import { resolve } from "path";
+import { basename, resolve } from "path";
 import { register } from "ts-node";
 import { page, start, stop } from ".";
 import { readConfig } from "./config";
@@ -28,7 +28,14 @@ function getScreenshotName() {
     .toISOString()
     .replace(/[:\-Z]/g, "")
     .replace(/[T.]/g, "-");
-  return resolve(config.cucumber.screenshots, `${datestamp}.png`);
+  const fileName = [
+    currentPickle.uri && basename(currentPickle.uri, ".feature"),
+    datestamp,
+  ]
+    .filter(Boolean)
+    .join("-");
+
+  return resolve(config.cucumber.screenshots, `${fileName}.png`);
 }
 
 BeforeAll(async () => {
