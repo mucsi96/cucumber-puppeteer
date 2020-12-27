@@ -5,6 +5,7 @@ import {
   SnapshotState,
   toMatchSnapshot as jestMatchSnapshot,
 } from "jest-snapshot";
+import { relative } from "path";
 import { getTestContext } from "./cucumberConfig";
 
 export function toMatchSnapshot(received: unknown, name: string) {
@@ -14,9 +15,10 @@ export function toMatchSnapshot(received: unknown, name: string) {
 
   const { fileName, testName } = getTestContext();
   const snapshotFile = snapshotResolver.resolveSnapshotPath(fileName);
+  const updateSnapshot = !!process.env.SNAPSHOT_UPDATE;
 
   const snapshotState = new SnapshotState(snapshotFile, {
-    updateSnapshot: process.env.SNAPSHOT_UPDATE ? "all" : "new",
+    updateSnapshot: updateSnapshot ? "all" : "new",
     getPrettier: () => null,
     getBabelTraverse: () => null as any,
   });
@@ -31,6 +33,12 @@ export function toMatchSnapshot(received: unknown, name: string) {
   );
 
   snapshotState.save();
+
+  if (snapshotState.updated) {
+    console.log(
+      `Snapshot ${relative(process.cwd(), snapshotFile)}:${testName} updated.`
+    );
+  }
 
   return result;
 }

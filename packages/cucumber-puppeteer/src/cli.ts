@@ -11,7 +11,10 @@ if (!config) {
   console.log("Usage: cucumber-puppeteer --config cucumber-puppeteer.conf.js");
 }
 
-process.env.SNAPSHOT_UPDATE = update || u || "";
+if (update || u) {
+  process.env.SNAPSHOT_UPDATE = "true";
+}
+
 process.env.CUCUMBER_PUPPETEER_CONFIG_PATH = config;
 const { cucumber } = readConfig(config);
 
