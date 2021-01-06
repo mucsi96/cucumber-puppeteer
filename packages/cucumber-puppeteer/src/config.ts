@@ -7,6 +7,7 @@ export type Configuration = {
   cucumber: {
     features: string[];
     stepDefinitions: string[];
+    setupFiles?: string[];
     screenshots: string;
     reports: string;
   };

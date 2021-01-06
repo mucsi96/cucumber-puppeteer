@@ -25,6 +25,10 @@ const cli = new Cli({
     ...cucumber.features,
     "--require",
     require.resolve("./cucumberConfig"),
+    ...(cucumber.setupFiles || []).reduce(
+      (acc, setupFile: string) => [...acc, "--require", setupFile],
+      [] as string[]
+    ),
     ...cucumber.stepDefinitions.reduce(
       (acc, stepDefinition: string) => [...acc, "--require", stepDefinition],
       [] as string[]
